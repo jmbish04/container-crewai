@@ -1,32 +1,71 @@
-# How to Contribute
+# Contributing
 
-We would love to accept your patches and contributions to this project.
+We welcome contributions to this project! Here's how you can help:
 
-## Before you begin
+## How to Contribute
 
-### Sign our Contributor License Agreement
+1. **Fork the Repository**
+   - Fork this repository to your own GitHub account
+   - Clone your fork locally
 
-Contributions to this project must be accompanied by a
-[Contributor License Agreement](https://cla.developers.google.com/about) (CLA).
-You (or your employer) retain the copyright to your contribution; this simply
-gives us permission to use and redistribute your contributions as part of the
-project.
+2. **Create a Branch**
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
 
-If you or your current employer have already signed the Google CLA (even if it
-was for a different project), you probably don't need to do it again.
+3. **Make Your Changes**
+   - Write clear, readable code
+   - Follow existing code style and conventions
+   - Add tests for new functionality
+   - Update documentation as needed
 
-Visit <https://cla.developers.google.com/> to see your current agreements or to
-sign a new one.
+4. **Test Your Changes**
+   ```bash
+   # Install dev dependencies
+   uv sync --dev
 
-### Review our Community Guidelines
+   # Run tests
+   uv run pytest
 
-This project follows [Google's Open Source Community
-Guidelines](https://opensource.google/conduct/).
+   # Run linter
+   uv run ruff check .
+   ```
 
-## Contribution process
+5. **Commit Your Changes**
+   ```bash
+   git add .
+   git commit -m "Description of your changes"
+   ```
 
-### Code Reviews
+6. **Push and Create Pull Request**
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+   - Open a pull request on GitHub
+   - Describe your changes clearly
+   - Reference any related issues
 
-All submissions, including submissions by project members, require review. We
-use [GitHub pull requests](https://docs.github.com/articles/about-pull-requests)
-for this purpose.
+## Code Style
+
+- Follow PEP 8 for Python code
+- Use type hints where appropriate
+- Write descriptive commit messages
+- Keep functions focused and small
+
+## Testing
+
+- Add tests for new features
+- Ensure all tests pass before submitting PR
+- Aim for good test coverage
+
+## Documentation
+
+- Update README.md if adding new features
+- Add docstrings to new functions and classes
+- Update API_GUIDE.md for API changes
+
+## Questions?
+
+Open an issue for questions or discussions.
+
+Thank you for contributing!
