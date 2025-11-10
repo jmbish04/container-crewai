@@ -8,7 +8,9 @@ Search Grounding to research and write content.
 ## Features
 
 - 🎯 **GitHub Profile Analysis**: Automatically analyze GitHub profiles and generate professional resumes
-- 💼 **LinkedIn Job Search**: Search and filter LinkedIn jobs (with browser automation coming soon)
+- 💼 **LinkedIn Job Search**: Search and filter LinkedIn jobs with **real browser automation** using Playwright
+- 🤖 **Computer Use Integration**: Powered by Gemini and Playwright for intelligent browser control
+- 🔐 **Secure Authentication**: LinkedIn login via Cloudflare Worker secrets
 - 🔄 **Configurable API**: POST custom search configurations via REST API
 - ❤️ **Health Monitoring**: Comprehensive health checks and Prometheus metrics
 - 🧪 **Full Test Suite**: Unit and integration tests with pytest

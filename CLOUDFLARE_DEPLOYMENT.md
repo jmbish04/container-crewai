@@ -46,9 +46,11 @@ This will open a browser window where you can authorize wrangler to access your 
 
 ## Configuration
 
-### Step 3: Set Your Gemini API Key
+### Step 3: Set Your Secrets
 
-Your Gemini API key needs to be stored as a Cloudflare secret (encrypted environment variable):
+Your API keys and credentials need to be stored as Cloudflare secrets (encrypted environment variables):
+
+#### Gemini API Key (Required)
 
 ```bash
 npm run secret:gemini
@@ -61,6 +63,20 @@ npx wrangler secret put GEMINI_API_KEY
 ```
 
 When prompted, paste your Gemini API key and press Enter.
+
+#### LinkedIn Credentials (Optional, for Job Search)
+
+To enable LinkedIn job search with authentication (gets more detailed results):
+
+```bash
+npx wrangler secret put LINKEDIN_USERNAME
+# Enter your LinkedIn email when prompted
+
+npx wrangler secret put LINKEDIN_PASSWORD
+# Enter your LinkedIn password when prompted
+```
+
+**Note**: LinkedIn credentials are optional. Job search will work without them, but authenticated searches return more detailed information.
 
 ### Step 4: Review the Configuration
 

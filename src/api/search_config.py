@@ -115,7 +115,7 @@ async def _process_github_search(config: GitHubSearchConfig, output_queue: async
 
 
 async def _process_linkedin_search(config: LinkedInJobSearchConfig, output_queue: asyncio.Queue):
-    """Process LinkedIn job search."""
+    """Process LinkedIn job search using browser automation."""
     try:
         await output_queue.put({
             'event': 'progress_update',
@@ -123,33 +123,67 @@ async def _process_linkedin_search(config: LinkedInJobSearchConfig, output_queue
             'message': f'Searching LinkedIn for jobs matching: {", ".join(config.keywords)}'
         })
 
-        # Import LinkedIn search crew (to be implemented)
-        # For now, this is a placeholder structure
+        # Import computer use agent
+        from computer_use.agent import ComputerUseAgent, BrowserEnvironment
+        import os
+
         await output_queue.put({
             'event': 'progress_update',
-            'status': 'searching',
-            'message': 'Connecting to LinkedIn search API...'
+            'status': 'initializing',
+            'message': 'Starting browser automation...'
         })
 
-        # Placeholder for LinkedIn search results
-        # This will be replaced with actual browser use/scraping implementation
-        results = {
-            'search_query': {
-                'keywords': config.keywords,
-                'location': config.location,
-                'experience_level': config.experience_level,
-                'job_type': config.job_type
-            },
-            'jobs_found': 0,
-            'jobs': [],
-            'message': 'LinkedIn job search feature coming soon. Browser automation will be integrated.'
-        }
+        # Check if LinkedIn credentials are available
+        has_credentials = bool(os.environ.get("LINKEDIN_USERNAME") and os.environ.get("LINKEDIN_PASSWORD"))
 
-        await output_queue.put({
-            'status': 'completed',
-            'output': results,
-            'type': 'linkedin_jobs'
-        })
+        # Initialize browser automation agent
+        async with ComputerUseAgent(
+            environment=BrowserEnvironment.PLAYWRIGHT,
+            headless=True  # Run headless in production
+        ) as agent:
+            await output_queue.put({
+                'event': 'progress_update',
+                'status': 'searching',
+                'message': 'Searching LinkedIn jobs...'
+            })
+
+            # Search LinkedIn jobs
+            jobs = await agent.search_linkedin_jobs(
+                keywords=config.keywords,
+                location=config.location,
+                experience_level=config.experience_level,
+                job_type=config.job_type,
+                max_results=config.max_results,
+                require_auth=has_credentials  # Only authenticate if credentials available
+            )
+
+            # Filter by company if specified
+            if config.company_filter:
+                jobs = [
+                    job for job in jobs
+                    if any(company.lower() in job['company'].lower() for company in config.company_filter)
+                ]
+
+            results = {
+                'search_query': {
+                    'keywords': config.keywords,
+                    'location': config.location,
+                    'experience_level': config.experience_level,
+                    'job_type': config.job_type,
+                    'company_filter': config.company_filter
+                },
+                'jobs_found': len(jobs),
+                'jobs': jobs,
+                'authenticated': has_credentials,
+                'message': f'Found {len(jobs)} matching jobs on LinkedIn'
+            }
+
+            await output_queue.put({
+                'status': 'completed',
+                'output': results,
+                'type': 'linkedin_jobs'
+            })
+
     except Exception as e:
         await output_queue.put({
             'status': 'error',

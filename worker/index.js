@@ -23,9 +23,11 @@ export class ResumeGeneratorContainer extends Container {
   constructor(state, env) {
     super(state, env);
 
-    // Pass the Gemini API key to the container
+    // Pass secrets to the container as environment variables
     this.envVars = {
       GEMINI_API_KEY: env.GEMINI_API_KEY || "",
+      LINKEDIN_USERNAME: env.LINKEDIN_USERNAME || "",
+      LINKEDIN_PASSWORD: env.LINKEDIN_PASSWORD || "",
       PORT: "8080"
     };
   }
