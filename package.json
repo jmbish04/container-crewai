@@ -1,0 +1,25 @@
+{
+  "name": "github-resume-generator-cloudflare",
+  "version": "1.0.0",
+  "description": "GitHub Resume Generator deployed on Cloudflare Containers",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail",
+    "secret:gemini": "wrangler secret put GEMINI_API_KEY"
+  },
+  "keywords": [
+    "cloudflare",
+    "containers",
+    "crewai",
+    "gemini",
+    "resume-generator"
+  ],
+  "author": "",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@cloudflare/containers": "^0.1.0",
+    "wrangler": "^3.95.0"
+  }
+}

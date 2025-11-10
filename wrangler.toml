@@ -1,0 +1,26 @@
+# Cloudflare Workers configuration for GitHub Resume Generator Container
+name = "github-resume-generator"
+main = "worker/index.js"
+compatibility_date = "2025-01-10"
+
+# Container configuration
+[containers]
+[[containers]]
+class_name = "ResumeGeneratorContainer"
+image = "./Dockerfile"
+max_instances = 5
+
+# Durable Objects binding for container orchestration
+[[durable_objects.bindings]]
+class_name = "ResumeGeneratorContainer"
+name = "RESUME_CONTAINER"
+
+# Migration for Durable Objects
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["ResumeGeneratorContainer"]
+
+# Environment variables (use secrets for sensitive data)
+[vars]
+# GEMINI_API_KEY will be set via secrets
+# Use: npx wrangler secret put GEMINI_API_KEY

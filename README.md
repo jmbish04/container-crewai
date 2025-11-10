@@ -98,6 +98,32 @@ With the API server running, browse to the docker port, http://localhost:8080/
 
 The Docker container can also be deployed directly to [Google Cloud Run](https://cloud.google.com/run).
 
+### Cloudflare Containers
+
+Deploy this application on Cloudflare's global network using Cloudflare Containers! This provides:
+
+- **Global distribution**: Your container runs at Cloudflare's edge locations worldwide
+- **Auto-scaling**: Automatically scales based on demand
+- **Fast cold starts**: Containers start in seconds
+- **Cost-effective**: Pay only for what you use with auto-sleep after inactivity
+
+See the detailed [Cloudflare Deployment Guide](CLOUDFLARE_DEPLOYMENT.md) for complete setup instructions.
+
+**Quick start:**
+
+```bash
+# Install dependencies
+npm install
+
+# Set your Gemini API key
+npx wrangler secret put GEMINI_API_KEY
+
+# Deploy to Cloudflare
+npm run deploy
+```
+
+Your application will be available at `https://github-resume-generator.<your-subdomain>.workers.dev`
+
 ## Running the Crew
 
 To run your crew of AI agents directly, without an API server, run this from the root folder of your project. Pass your GitHub username as the last argument to generate their resume.
