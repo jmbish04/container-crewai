@@ -1,13 +1,26 @@
 [project]
 name = "github_resume_generator"
 version = "0.1.0"
-description = "Demo of Gemini 2.5 with Search Grounding using CrewAI to generate Resumes from GitHub" # Updated description
+description = "Demo of Gemini 2.5 with Search Grounding using CrewAI to generate Resumes from GitHub and LinkedIn job search"
 authors = [{ name = "Mark McDonald", email = "macd@google.com" }]
 requires-python = ">=3.10,<3.13"
 dependencies = [
     "crewai[tools]>=0.119.0,<1.0.0",
     "fastapi>=0.115.12",
     "uvicorn>=0.34.2",
+    "httpx>=0.24.0",
+    "psutil>=5.9.0",
+    "pydantic>=2.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.1.0",
+    "pytest-mock>=3.11.0",
+    "ruff>=0.1.0",
+    "mypy>=1.5.0",
 ]
 
 [project.scripts]

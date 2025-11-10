@@ -23,9 +23,12 @@ from crewai.tasks.task_output import TaskOutput
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse, RedirectResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
 import urllib.parse
 
 from github_resume_generator.crew import GithubResumeGenerator
+from api.health import router as health_router
+from api.search_config import router as search_router
 
 
 STATIC_DIR = pathlib.Path(__file__).parent.parent / "static"
@@ -33,7 +36,27 @@ INDEX_HTML_PATH = STATIC_DIR / "index.html"
 KEEPALIVE_INTERVAL_SECS = 5
 MAX_KEEPALIVE_SECS = 120
 
-app = FastAPI()
+app = FastAPI(
+    title="CrewAI Resume & Job Search Generator",
+    version="1.0.0",
+    description="AI-powered resume generation from GitHub profiles and LinkedIn job search",
+    docs_url="/api/docs",
+    redoc_url="/api/redoc"
+)
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Configure appropriately for production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Include routers
+app.include_router(health_router)
+app.include_router(search_router)
+
 app.mount("/r", StaticFiles(directory=STATIC_DIR), name="static")
 
 
