@@ -19,7 +19,7 @@
   "author": "",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@cloudflare/containers": "^0.1.0",
+    "@cloudflare/containers": "^0.0.30",
     "wrangler": "^3.95.0"
   }
 }

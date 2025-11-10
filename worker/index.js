@@ -33,21 +33,21 @@ export class ResumeGeneratorContainer extends Container {
   /**
    * Lifecycle hook: called when container starts
    */
-  override onStart() {
+  onStart() {
     console.log("Resume Generator container started successfully");
   }
 
   /**
    * Lifecycle hook: called when container stops
    */
-  override onStop() {
+  onStop() {
     console.log("Resume Generator container stopped");
   }
 
   /**
    * Lifecycle hook: called on container errors
    */
-  override onError(error) {
+  onError(error) {
     console.error("Resume Generator container error:", error);
   }
 }

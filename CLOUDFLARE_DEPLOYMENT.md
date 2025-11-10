@@ -66,9 +66,10 @@ When prompted, paste your Gemini API key and press Enter.
 
 The project includes these configuration files:
 
-- **`wrangler.toml`**: Cloudflare Worker configuration
+- **`wrangler.jsonc`**: Cloudflare Worker configuration (JSON with comments)
   - Container settings (max instances, image location)
   - Durable Objects bindings for container orchestration
+  - Node.js compatibility flags
 
 - **`worker/index.js`**: Worker script that routes requests to the container
   - Handles all HTTP routing
@@ -79,6 +80,8 @@ The project includes these configuration files:
   - Built for `linux/amd64` architecture (required by Cloudflare)
   - Multi-stage build for optimal image size
   - Runs FastAPI on port 8080
+
+**Note**: We use `wrangler.jsonc` instead of `wrangler.toml` because the current wrangler version (3.114.x) requires the containers configuration to be an object rather than an array, which is more naturally expressed in JSON format.
 
 ## Local Development
 
