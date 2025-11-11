@@ -1,0 +1,37 @@
+{
+  // Cloudflare Workers configuration for GitHub Resume Generator Container
+  "name": "github-resume-generator",
+  "main": "worker/index.js",
+  "compatibility_date": "2025-01-10",
+  "compatibility_flags": ["nodejs_compat"],
+
+  // Container configuration
+  "containers": {
+    "class_name": "ResumeGeneratorContainer",
+    "image": "./Dockerfile",
+    "max_instances": 5
+  },
+
+  // Durable Objects binding for container orchestration
+  "durable_objects": {
+    "bindings": [
+      {
+        "class_name": "ResumeGeneratorContainer",
+        "name": "RESUME_CONTAINER"
+      }
+    ]
+  },
+
+  // Migrations for Durable Objects
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["ResumeGeneratorContainer"]
+    }
+  ],
+
+  // Observability
+  "observability": {
+    "enabled": true
+  }
+}
