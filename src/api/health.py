@@ -228,4 +228,4 @@ async def metrics():
         f"memory_percent {metrics_data.get('memory_percent', 0)}",
     ]
 
-    return "\n".join(lines)
+    return Response('\n'.join(lines), media_type='text/plain')

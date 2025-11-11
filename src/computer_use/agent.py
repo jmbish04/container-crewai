@@ -84,7 +84,7 @@ class ComputerUseAgent:
 
         # Configure Gemini
         genai.configure(api_key=self.api_key)
-        self.model = genai.GenerativeModel('gemini-2.0-flash-exp')
+        self.model = genai.GenerativeModel(os.environ.get("GEMINI_MODEL", 'gemini-2.0-flash-exp'))
 
         # Browser state
         self.browser: Optional[Browser] = None
