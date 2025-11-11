@@ -291,7 +291,7 @@ The auto-sleep feature (stops after 10 minutes) helps minimize container runtime
 Edit `worker/index.js` to modify:
 
 - **Sleep timeout**: Change `sleepAfter = "10m"` to a different duration
-- **Max instances**: Edit `max_instances` in `wrangler.toml`
+- **Max instances**: Edit `max_instances` in `wrangler.jsonc`
 - **Error handling**: Customize the error response in the catch block
 
 ### Adding Custom Domains
