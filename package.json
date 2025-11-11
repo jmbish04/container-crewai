@@ -3,6 +3,14 @@
   "version": "1.0.0",
   "description": "GitHub Resume Generator deployed on Cloudflare Containers",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jmbish04/container-crewai.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jmbish04/container-crewai/issues"
+  },
+  "homepage": "https://github.com/jmbish04/container-crewai#readme",
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",

@@ -516,6 +516,6 @@ Interactive API documentation is available:
 ## Support
 
 For issues or questions:
-- GitHub Issues: [repository/issues]
+- GitHub Issues: https://github.com/jmbish04/container-crewai/issues
 - Documentation: [CLOUDFLARE_DEPLOYMENT.md](./CLOUDFLARE_DEPLOYMENT.md)
 - API Docs: `http://localhost:8080/api/docs`

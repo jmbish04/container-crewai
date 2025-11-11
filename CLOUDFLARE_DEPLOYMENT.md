@@ -328,4 +328,4 @@ To add more environment variables:
 
 ---
 
-**Need help?** Open an issue in the repository or reach out to the Cloudflare community on Discord!
+**Need help?** Open an issue at https://github.com/jmbish04/container-crewai/issues or reach out to the Cloudflare community on Discord!

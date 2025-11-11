@@ -419,7 +419,7 @@ For issues or questions:
 - Check [API_GUIDE.md](./API_GUIDE.md) for API usage
 - See [CLOUDFLARE_DEPLOYMENT.md](./CLOUDFLARE_DEPLOYMENT.md) for deployment
 - Review [tests/](./tests/) for examples
-- Open an issue on GitHub
+- Open an issue: https://github.com/jmbish04/container-crewai/issues
 
 ---
 
