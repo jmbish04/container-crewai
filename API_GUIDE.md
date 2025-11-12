@@ -412,7 +412,7 @@ curl -X POST http://localhost:8080/api/search/execute \
 
 ```bash
 curl -X POST http://localhost:8080/api/search/execute \
-  -H "Content-Type": application/json" \
+  -H "Content-Type: application/json" \
   -d '{
     "search_type": "combined",
     "github_config": {

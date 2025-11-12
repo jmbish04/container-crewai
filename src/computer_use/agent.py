@@ -436,7 +436,7 @@ class ComputerUseAgent:
             # Wait for job listings to load
             try:
                 await self.page.wait_for_selector(".job-search-card", timeout=10000)
-            except:
+            except Exception:
                 # Try alternative selector
                 await self.page.wait_for_selector(".jobs-search__results-list", timeout=10000)
 

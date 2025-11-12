@@ -84,7 +84,8 @@ export default {
 
       // Add CORS headers if needed
       const newHeaders = new Headers(response.headers);
-      newHeaders.set("Access-Control-Allow-Origin", "*");
+      // TODO: Restrict this to your frontend's domain in production.
+      newHeaders.set("Access-Control-Allow-Origin", "https://your-frontend.com");
       newHeaders.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
       newHeaders.set("Access-Control-Allow-Headers", "Content-Type");
 
