@@ -34,11 +34,11 @@ class GeminiWithGoogleSearch(LLM):
     """
 
     def __init__(self, model: str | None = None, **kwargs):
-       if not model:
-          # Use a default Gemini model.
-          model = os.getenv('MODEL', 'gemini/gemini-2.5-flash-preview-04-17')
+        if not model:
+            # Use a default Gemini model.
+            model = os.getenv('MODEL', 'gemini/gemini-2.5-flash-preview-04-17')
 
-       super().__init__(model, **kwargs)
+        super().__init__(model, **kwargs)
 
     def call(
         self,
