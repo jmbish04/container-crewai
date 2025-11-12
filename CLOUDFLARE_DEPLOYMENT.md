@@ -307,7 +307,7 @@ Once deployed, you can add a custom domain:
 
 To add more environment variables:
 
-1. Add them to `wrangler.toml` under `[vars]` (non-sensitive data)
+1. Add them to `wrangler.jsonc` under a `"vars"` key (non-sensitive data)
 2. Or use secrets: `npx wrangler secret put VARIABLE_NAME` (sensitive data)
 3. Access them in the container via `this.envVars` in the Container class
 
