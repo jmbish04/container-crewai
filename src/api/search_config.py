@@ -255,7 +255,7 @@ async def execute_search(request: SearchRequest):
 
     Supports:
     - GitHub profile analysis and resume generation
-    - LinkedIn job search (with browser automation support coming soon)
+    - LinkedIn job search with browser automation
     - Combined searches
 
     Returns a Server-Sent Events stream with progress updates.
